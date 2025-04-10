@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Explore Emotional Architecture: Decoding the Impact of Design on Human Behavior. Discover how interior design and spatial perception influence psychological effects in home design." name="description"/>
+<meta content="emotional architecture, interior design, human behavior, design psychology, spatial perception, architectural impact, interior layout, psychological effects, space design, home design, sweethome 3d, home 3d" name="keywords"/>
+<title>Home_Design</title>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;700&amp;family=Caveat&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+        --primary-color: #f8f9fa;
+        --secondary-color: #e9ecef;
+        --accent-color-1: #001f3f;
+        --accent-color-2: #800020;
+        --accent-color-3: #1a4731;
+        --pop-color-1: #008080;
+        --pop-color-2: #ff6b6b;
+        --pop-color-3: #ffd700;
+    }
+    
+    body {
+        font-family: 'Futura', sans-serif;
+        color: var(--accent-color-1);
+        background-color: var(--primary-color);
+        line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 700;
+    }
+    
+    .accent-text {
+        font-family: 'Caveat', cursive;
+        color: var(--accent-color-2);
+    }
+    
+    .btn {
+        border: none;
+        transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+        transform: scale(1.05);
+    }
+    
+    .geometric-shape {
+        position: absolute;
+        opacity: 0.1;
+        transition: all 0.5s ease;
+    }
+    
+    .geometric-shape:hover {
+        opacity: 0.3;
+        transform: rotate(15deg);
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            const elements = document.elementsFromPoint(e.clientX, e.clientY);
+            elements.forEach(el => {
+                if (el.classList.contains('interactive')) {
+                    el.style.transform = `translate(${(e.clientX - el.offsetLeft - el.offsetWidth / 2) / 20}px, ${(e.clientY - el.offsetTop - el.offsetHeight / 2) / 20}px)`;
+                }
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrollProgress = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            document.body.style.setProperty('--scroll-progress', scrollProgress);
+        });
+    });
+</script>
+<div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" id="cookie-popup" style="background-color: rgba(0,0,0,0.5); z-index: 9999;">
+<div class="bg-white p-4 rounded-3 shadow" style="max-width: 400px;">
+<h5 class="mb-3">Cookie Consent</h5>
+<p>We use cookies to enhance your experience and analyze our site usage. By clicking "Accept", you consent to the use of ALL cookies. To learn more, visit our Privacy Policy.</p>
+<div class="d-flex justify-content-end mt-3">
+<button class="btn btn-outline-secondary me-2" id="reject-cookies">Reject</button>
+<button class="btn btn-primary" id="accept-cookies">Accept</button>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cookiePopup = document.getElementById('cookie-popup');
+    const acceptButton = document.getElementById('accept-cookies');
+    const rejectButton = document.getElementById('reject-cookies');
+
+    function hideCookiePopup() {
+        cookiePopup.style.display = 'none !important';
+        cookiePopup.remove(); // Completely remove from DOM
+    }
+
+    function setCookiePreference(accepted) {
+        localStorage.setItem('cookiePreference', accepted ? 'accepted' : 'rejected');
+        hideCookiePopup();
+    }
+
+    if (localStorage.getItem('cookiePreference') === null) {
+        cookiePopup.style.display = 'flex';
+    } else {
+        hideCookiePopup();
+    }
+
+    acceptButton.addEventListener('click', function() {
+        setCookiePreference(true);
+    });
+
+    rejectButton.addEventListener('click', function() {
+        setCookiePreference(false);
+    });
+});
+</script>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+<div style="flex: 1;">
+<header>
+<header class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container">
+<a class="navbar-brand" href="/" style="font-family: 'Futura', sans-serif; font-size: 1.5rem; color: #000080;">Emotional Architecture</a>
+<button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+<ul class="navbar-nav">
+<li class="nav-item">
+<a class="nav-link" href="posts.html" style="font-family: 'Helvetica Neue', sans-serif; color: #4B0082;">Posts</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="about.html" style="font-family: 'Helvetica Neue', sans-serif; color: #4B0082;">About</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="contacts.html" style="font-family: 'Helvetica Neue', sans-serif; color: #4B0082;">Contacts</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="privacy_policy.html" style="font-family: 'Helvetica Neue', sans-serif; color: #4B0082;">Privacy Policy</a>
+</li>
+</ul>
+</div>
+</div>
+</header>
+<style>
+  .navbar {
+    background-color: #F5F5F5 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-brand {
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-brand:hover {
+    color: #800000 !important;
+  }
+  
+  .nav-link {
+    margin: 0 10px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #008080;
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #008080 !important;
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  @media (max-width: 991px) {
+    .navbar-nav {
+      text-align: center;
+    }
+    
+    .nav-link {
+      margin: 10px 0;
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', (event) => {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('mouseover', (e) => {
+        e.target.style.transform = 'scale(1.1)';
+      });
+      link.addEventListener('mouseout', (e) => {
+        e.target.style.transform = 'scale(1)';
+      });
+    });
+
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+
+    navbarToggler.addEventListener('click', () => {
+      navbarCollapse.classList.toggle('show');
+    });
+  });
+</script>
+</header>
+<div style="margin-bottom: 50px;">
+<div class="container mt-5">
+<h1 class="display-4 text-center mb-4" style="font-family: 'Futura', sans-serif; color: #2c3e50;">Exploring the Depths of Design</h1>
+<p class="lead text-center" style="font-family: 'Helvetica Neue', sans-serif; color: #34495e; max-width: 800px; margin: 0 auto;">
+    Dive into our collection of insights on emotional architecture and the significantfound impact of interior design on human behavior. Each post unravels the intricate relationship between space, psychology, and our daily lives.
+  </p>
+<div class="text-center mt-4">
+<span class="badge bg-primary me-2" style="background-color: #3498db !important;">Spatial Perception</span>
+<span class="badge bg-success me-2" style="background-color: #2ecc71 !important;">Design Psychology</span>
+<span class="badge bg-danger me-2" style="background-color: #e74c3c !important;">Home Design</span>
+<span class="badge bg-warning" style="background-color: #f39c12 !important;">Architectural Impact</span>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+  const heading = document.querySelector('.display-4');
+  const paragraph = document.querySelector('.lead');
+  const badges = document.querySelectorAll('.badge');
+
+  // Animate heading
+  heading.style.opacity = '0';
+  heading.style.transform = 'translateY(-20px)';
+  setTimeout(() => {
+    heading.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+    heading.style.opacity = '1';
+    heading.style.transform = 'translateY(0)';
+  }, 300);
+
+  // Animate paragraph
+  paragraph.style.opacity = '0';
+  setTimeout(() => {
+    paragraph.style.transition = 'opacity 0.5s ease-out';
+    paragraph.style.opacity = '1';
+  }, 800);
+
+  // Animate badges
+  badges.forEach((badge, index) => {
+    badge.style.opacity = '0';
+    badge.style.transform = 'scale(0.8)';
+    setTimeout(() => {
+      badge.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+      badge.style.opacity = '1';
+      badge.style.transform = 'scale(1)';
+    }, 1200 + index * 100);
+  });
+});
+</script>
+</div>
+<div class="container mt-5">
+<div class="row">
+<div class="col-lg-8 mx-auto">
+<div class="card-columns">
+<div class="card mb-4">
+<img alt="A color wheel with various room interiors showcasing different color schemes and their emotional impacts" class="card-img-top" src="images/image_0_posts.png"/>
+<div class="card-body">
+<h5 class="card-title">The Psychology of Color in Home Design</h5>
+<p class="card-text">Explore how different colors in your home can affect mood, productivityductivity, and overall well-being.</p>
+<a class="btn btn-primary" href="posts_1.html">Read More</a>
+</div>
+</div>
+<div class="card mb-4">
+<img alt="An interior space with abundant plants, natural light, and organic materials, demonstrating biophilic design principles" class="card-img-top" src="images/image_1_posts.png"/>
+<div class="card-body">
+<h5 class="card-title">Biophilic Design: Bringing Nature Indoors</h5>
+<p class="card-text">Discover the benefits of incorporating natural elements into your home's design for imenhancedved mental health and connection to the environment.</p>
+<a class="btn btn-primary" href="posts_2.html">Read More</a>
+</div>
+</div>
+<div class="card mb-4">
+<img alt="A series of room interiors with various lighting scenarios, showcasing how different lighting affects mood and atmosphere" class="card-img-top" src="images/image_2_posts.png"/>
+<div class="card-body">
+<h5 class="card-title">The Impact of Lighting on Emotional Well-being</h5>
+<p class="card-text">Learn how strategic lighting choices can influence emotions and create desired atmospheres in various rooms of your home.</p>
+<a class="btn btn-primary" href="posts_3.html">Read More</a>
+</div>
+</div>
+<div class="card mb-4">
+<img alt="A diagram of a home layout with Feng Shui elements highlighted, showing the flow of energy and optimal furniture placement" class="card-img-top" src="images/image_3_posts.png"/>
+<div class="card-body">
+<h5 class="card-title">Feng Shui Principles for Harmonious Living Spaces</h5>
+<p class="card-text">Uncover the ancient Chinese practice of Feng Shui and how it can be applied to contemporaryern home design for better energy flow and balance.</p>
+<a class="btn btn-primary" href="posts_4.html">Read More</a>
+</div>
+</div>
+<div class="card mb-4">
+<img alt="A split image comparing a minimalist, sparse interior with a maximalist, richly decorated room, highlighting the contrast in design approaches" class="card-img-top" src="images/image_4_posts.png"/>
+<div class="card-body">
+<h5 class="card-title">Minimalism vs. Maximalism: Emotional Responses to Design Extremes</h5>
+<p class="card-text">Analyze the psychological effects of minimalist and maximalist design apapproachesaches on inhabitants and how to strike the right balance for your personality.</p>
+<a class="btn btn-primary" href="posts_5.html">Read More</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = document.querySelectorAll('.card');
+  
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-10px)';
+      this.style.transition = 'transform 0.3s ease';
+      this.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+    });
+
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0)';
+      this.style.boxShadow = 'none';
+    });
+  });
+});
+</script>
+</div>
+<footer style="width: 100%; z-index: 1000;">
+<footer class="bg-light py-4">
+<div class="container">
+<div class="row">
+<div class="col-md-4 mb-3 mb-md-0">
+<h5 class="text-dark mb-3">Home_Design</h5>
+<p class="text-muted small">Exploring Emotional Architecture and its impact on human behavior through innovative interior design.</p>
+</div>
+<div class="col-md-4 mb-3 mb-md-0">
+<h5 class="text-dark mb-3">Quick Links</h5>
+<ul class="list-unstyled">
+<li><a class="text-muted" href="posts.html">Posts</a></li>
+<li><a class="text-muted" href="about.html">About</a></li>
+<li><a class="text-muted" href="contacts.html">Contacts</a></li>
+<li><a class="text-muted" href="privacy_policy.html">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="col-md-4">
+<h5 class="text-dark mb-3">Connect With Us</h5>
+<div class="d-flex">
+<a class="text-muted me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+<a class="text-muted me-3" href="#"><i class="fab fa-twitter"></i></a>
+<a class="text-muted me-3" href="#"><i class="fab fa-instagram"></i></a>
+<a class="text-muted" href="#"><i class="fab fa-linkedin-in"></i></a>
+</div>
+</div>
+</div>
+<hr class="my-4"/>
+<div class="row align-items-center">
+<div class="col-md-6 text-center text-md-start">
+<p class="text-muted small mb-0">© 2024 Home_Design. All rights reserved.</p>
+</div>
+<div class="col-md-6 text-center text-md-end">
+<p class="text-muted small mb-0">
+<a class="text-muted" href="tel:+1234567890">+1 (234) 567-890</a> | 
+                    <a class="text-muted" href="mailto:info@homedesign.com">info@homedesign.com</a>
+</p>
+</div>
+</div>
+</div>
+</footer>
+<script crossorigin="anonymous" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</footer>
+</body>
+</html>
